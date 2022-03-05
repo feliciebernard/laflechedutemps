@@ -10,5 +10,46 @@
   <%= @event.date %>
 </p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<p>
+  <strong>Description:</strong>
+  <%= @event.description %>
+</p>
+
+<h1>Activities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Duration</th>
+      <th>Description</th>
+      <th>Picture</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @activities.each do |activity| %>
+      <tr>
+        <td><%= activity.title %></td>
+        <td><%= activity.duration %></td>
+        <td><%= activity.description %></td>
+        <td><%= activity.picture %></td>
+        <td><%= link_to 'Show', activity %></td>
+        <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
+        <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Ajouter une nouvelle activité', new_activity_path(:event => @event.id) %>
+
+<br>
+
+
+
+<%= link_to "Modifier l'événement", edit_event_path(@event) %> |
+<%= link_to 'Retour aux événements', events_path %>
