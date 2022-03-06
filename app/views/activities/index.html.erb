@@ -9,6 +9,7 @@
       <th>Duration</th>
       <th>Description</th>
       <th>Picture</th>
+      <th>Event_id</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,6 +21,7 @@
         <td><%= activity.duration %></td>
         <td><%= activity.description %></td>
         <td><%= activity.picture %></td>
+        <td><%= activity.event.title %></td>
         <td><%= link_to 'Show', activity %></td>
         <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
         <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -40,7 +40,7 @@ class ActivitiesController < ApplicationController
   def update
     respond_to do |format|
       if @activity.update(activity_params)
-        format.html { redirect_to activity_url(@activity), notice: "Activity was successfully updated." }
+        format.html { redirect_to @event, notice: "Activity was successfully updated." }
         format.json { render :show, status: :ok, location: @activity }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,7 +54,7 @@ class ActivitiesController < ApplicationController
     @activity.destroy
 
     respond_to do |format|
-      format.html { redirect_to activities_url, notice: "Activity was successfully destroyed." }
+      format.html { redirect_to @event, notice: "Activity was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -67,6 +67,6 @@ class ActivitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def activity_params
-      params.require(:activity).permit(:title, :duration, :description, :picture, :event_)
+      params.require(:activity).permit(:title, :duration, :description, :picture, :event)
     end
 end
